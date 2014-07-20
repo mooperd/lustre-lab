@@ -1,32 +1,32 @@
 system:
     network.system:
       - enabled: True
-      - gateway: 192.168.0.1
+      - gateway: 10.141.255.254
       - gatewaydev: eth0
 eth0:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    {% if grains['nodename'] == 'mds01.cumberbatch.com' %}
-    - ipaddr: 192.168.0.201
-    {% elif grains['nodename'] == 'mds02.cumberbatch.com' %}
-    - ipaddr: 192.168.0.202
+    {% if grains['nodename'] == 'mds01.cm.cluster' %}
+    - ipaddr: 10.141.100.101
+    {% elif grains['nodename'] == 'mds02.cm.cluster' %}
+    - ipaddr: 10.141.100.102
     {% endif %}
-    - netmask: 255.255.255.0
+    - netmask: 255.255.0.0
     - dns:
-      - 192.168.0.150
+      - 10.141.255.254
 eth1:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    {% if grains['nodename'] == 'mds01.cumberbatch.com' %}
-    - ipaddr: 10.51.0.201
-    {% elif grains['nodename'] == 'mds02.cumberbatch.com' %}
-    - ipaddr: 10.51.0.202
+    {% if grains['nodename'] == 'mds01.cm.cluster' %}
+    - ipaddr: 192.168.100.101
+    {% elif grains['nodename'] == 'mds02.cm.cluster' %}
+    - ipaddr: 192.168.100.102
     {% endif %}
-    - netmask: 255.255.255.0
+    - netmask: 255.255.0.0
 
 eth2:
   network.managed:
